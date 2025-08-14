@@ -1,0 +1,21 @@
+{
+  "name": "poc-websocket-presentacion",
+  "version": "1.0.0",
+  "description": "POC WebSocket con Express, React Chat y Presentación Spectacle",
+  "scripts": {
+    "setup": "npm run install:all",
+    "install:all": "cd backend && npm install && cd ../frontend && npm install && cd ../presentation && npm install",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\" \"npm run dev:presentation\"",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm start",
+    "dev:presentation": "cd presentation && npm start",
+    "start:backend": "cd backend && npm start",
+    "start:frontend": "cd frontend && npm run build && serve -s build -l 3000",
+    "start:presentation": "cd presentation && npm run build && serve -s build -l 3002"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,20 @@
+{
+  "name": "poc-websocket-backend",
+  "version": "1.0.0",
+  "description": "Backend Express con WebSocket para POC de chat",
+  "main": "servidor.js",
+  "scripts": {
+    "start": "node servidor.js",
+    "dev": "nodemon servidor.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "ws": "^8.18.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "keywords": ["express", "websocket", "chat"],
+  "author": "",
+  "license": "ISC"
+}
