@@ -1,8 +1,6 @@
 const websocket = require('ws');
 const server = new websocket.Server({ port: 3001, host: '0.0.0.0' });
 
-// Asignar un ID único a cada conexión
-let nextId = 1;
 
 server.on('connection', (socket) => {
     // Obtener la IP y el último segmento

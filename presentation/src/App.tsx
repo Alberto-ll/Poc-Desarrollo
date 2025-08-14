@@ -397,7 +397,7 @@ const App: React.FC = () => {
             fontSize="h4"
             fontWeight="bold"
             cursor="pointer"
-            onClick={() => window.open('https://websocket-demo-app.vercel.app', '_blank')}
+            onClick={() => window.open('http://localhost:3000', '_blank')}
             style={{
               transition: 'all 0.2s ease',
               boxShadow: '0 4px 15px rgba(0,0,0,0.2)',
