@@ -10,6 +10,7 @@ server.on('connection', (socket) => {
 
     console.log('usuario conectado desde IP:', ip);
 
+    // Recibir mensaje
     socket.on('message', (data) => {
         console.log('mensaje recibido:', data.toString());
         server.clients.forEach((client) => {
@@ -18,6 +19,7 @@ server.on('connection', (socket) => {
                 client !== socket &&
                 client.readyState === websocket.OPEN
             ) {
+                // Envia mensaje a cliente
                 client.send(`Usuario .${socket.userIpSegment}: ${data}`);
             }
         });

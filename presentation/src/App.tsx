@@ -385,7 +385,7 @@ const App: React.FC = () => {
           style={{ backdropFilter: 'blur(8px)' }}
         >
           <Text fontSize="h4" color="primary" margin="0 0 15px 0" fontFamily="monospace">
-            🌐 https://websocket-demo-app.vercel.app
+            🌐 http://192.168.201.250:3000
           </Text>
           <Box
             as="button"
@@ -397,7 +397,7 @@ const App: React.FC = () => {
             fontSize="h4"
             fontWeight="bold"
             cursor="pointer"
-            onClick={() => window.open('http://localhost:3000', '_blank')}
+            onClick={() => window.open('http://192.168.201.250:3000 ', '_blank')}
             style={{
               transition: 'all 0.2s ease',
               boxShadow: '0 4px 15px rgba(0,0,0,0.2)',
