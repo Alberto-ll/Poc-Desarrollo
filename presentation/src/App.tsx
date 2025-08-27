@@ -9,7 +9,8 @@ import {
   Box,
   UnorderedList,
   ListItem,
-  Appear
+  Appear,
+  CodePane
 } from 'spectacle';
 
 // Import images
@@ -85,11 +86,7 @@ const SlideWithBackground: React.FC<SlideWithBackgroundProps> = ({
       backgroundImage={`url(${backgroundImage})`}
       backgroundSize="cover"
       backgroundPosition="center"
-      style={{ 
-        position: 'relative',
-        backgroundColor: '#1864ab',
-        overflow: 'hidden'
-      }}
+      backgroundColor="#1864ab"
     >
       <Box
         position="absolute"
@@ -122,27 +119,30 @@ const SlideWithBackground: React.FC<SlideWithBackgroundProps> = ({
 const App: React.FC = () => {
   return (
     <Deck 
-      theme={theme}
-      transitionEffect="slide"
-      transitionDuration={600}
+      theme={{
+        colors: theme.colors,
+        fonts: theme.fonts,
+        fontSizes: theme.fontSizes,
+        space: theme.space
+      }}
     >
       {/* Portada */}
       <SlideWithBackground backgroundImage={imagen4} overlayOpacity={0.8} contentPadding="5%">
-        <Heading fontSize="h1" color="primary" textAlign="center" margin="0 0 30px 0">
+        <Heading fontSize={theme.fontSizes.h1} color="primary" textAlign="center" margin="0 0 30px 0">
           ¿Qué son los WebSockets?
         </Heading>
-        <Text fontSize="h3" color="tertiary" textAlign="center" margin="30px 0">
+        <Text fontSize={theme.fontSizes.h3} color="tertiary" textAlign="center" margin="30px 0">
           Es un protocolo de comunicación que permite la transmisión bidireccional de datos entre un cliente y un servidor en tiempo real.
         </Text>
       </SlideWithBackground>
 
       {/* Antes de los WebSockets */}
       <SlideWithBackground backgroundImage={imagen4} overlayOpacity={0.75}>
-        <Heading fontSize="h2" color="primary" textAlign="center" margin="0 0 40px 0">
+        <Heading fontSize={theme.fontSizes.h2} color="primary" textAlign="center" margin="0 0 40px 0">
           Antes de los WebSockets
         </Heading>
         <Appear>
-          <Text fontSize="h3" color="tertiary" textAlign="center" margin="30px 0">
+          <Text fontSize={theme.fontSizes.h3} color="tertiary" textAlign="center" margin="30px 0">
             Las aplicaciones realizaban múltiples peticiones HTTP
           </Text>
         </Appear>
@@ -170,13 +170,13 @@ const App: React.FC = () => {
 
       {/* Con WebSockets */}
       <SlideWithBackground backgroundImage={imagen4} overlayOpacity={0.75}>
-        <Heading fontSize="h2" color="primary" textAlign="center" margin="0 0 40px 0">
+        <Heading fontSize={theme.fontSizes.h2} color="primary" textAlign="center" margin="0 0 40px 0">
           Con WebSockets
         </Heading>
         <Appear>
-          <Text fontSize="h3" color="tertiary" textAlign="center" margin="30px 0">
+          <Text fontSize={theme.fontSizes.h3} color="tertiary" textAlign="center" margin="30px 0">
             Se establece una conexión persistente que permite la comunicación en tiempo real.
-          </Text>
+            </Text>
         </Appear>
         <Appear>
           <Box 
@@ -202,7 +202,7 @@ const App: React.FC = () => {
 
       {/* ¿Para qué son utilizados? */}
       <SlideWithBackground backgroundImage={imagen4} overlayOpacity={0.75} contentPadding="5% 8%">
-        <Heading fontSize="h2" color="primary" textAlign="center" margin="0 0 40px 0">
+        <Heading fontSize={theme.fontSizes.h2} color="primary" textAlign="center" margin="0 0 40px 0">
           ¿Para qué son utilizados?
         </Heading>
         <UnorderedList 
@@ -263,17 +263,17 @@ const App: React.FC = () => {
 
       {/* WebRTC */}
       <SlideWithBackground backgroundImage={imagen5} overlayOpacity={0.8} contentPadding="5%">
-        <Heading fontSize="h1" color="primary" textAlign="center" margin="0 0 30px 0">
+        <Heading fontSize={theme.fontSizes.h1} color="primary" textAlign="center" margin="0 0 30px 0">
           ¿Qué es WebRTC?
         </Heading>
-        <Text fontSize="h3" color="tertiary" textAlign="center" margin="30px 0">
+        <Text fontSize={theme.fontSizes.h3} color="tertiary" textAlign="center" margin="30px 0">
           Es una tecnología y conjunto de protocolos que permite la comunicación en tiempo real directamente entre navegadores o aplicaciones, sin necesidad de un servidor intermedio para la transmisión de datos.
         </Text>
       </SlideWithBackground>
 
       {/* Desafíos de WebRTC */}
       <SlideWithBackground backgroundImage={imagen5} overlayOpacity={0.75} contentPadding="5% 8%">
-        <Heading fontSize="h2" color="primary" textAlign="center" margin="0 0 40px 0">
+        <Heading fontSize={theme.fontSizes.h2} color="primary" textAlign="center" margin="0 0 40px 0">
           Desafíos de WebRTC
         </Heading>
         <UnorderedList 
@@ -327,7 +327,7 @@ const App: React.FC = () => {
 
       {/* ¿Para qué es utilizada WebRTC? */}
       <SlideWithBackground backgroundImage={imagen5} overlayOpacity={0.75} contentPadding="5% 8%">
-        <Heading fontSize="h2" color="primary" textAlign="center" margin="0 0 40px 0">
+        <Heading fontSize={theme.fontSizes.h2} color="primary" textAlign="center" margin="0 0 40px 0">
           ¿Para qué es utilizada WebRTC?
         </Heading>
         <UnorderedList 
@@ -370,10 +370,10 @@ const App: React.FC = () => {
 
       {/* Demo */}
       <SlideWithBackground backgroundImage={imagen4} overlayOpacity={0.8} contentPadding="5%">
-        <Heading fontSize="h2" color="primary" textAlign="center" margin="0 0 40px 0">
+        <Heading fontSize={theme.fontSizes.h2} color="primary" textAlign="center" margin="0 0 40px 0">
           Prueba Práctica
         </Heading>
-        <Text fontSize="h3" color="tertiary" textAlign="center" margin="30px 0">
+        <Text fontSize={theme.fontSizes.h3} color="tertiary" textAlign="center" margin="30px 0">
           Experimenta con WebSockets en tiempo real
         </Text>
         <Box 
@@ -384,7 +384,7 @@ const App: React.FC = () => {
           margin="30px auto"
           style={{ backdropFilter: 'blur(8px)' }}
         >
-          <Text fontSize="h4" color="primary" margin="0 0 15px 0" fontFamily="monospace">
+          <Text fontSize={theme.fontSizes.h4} color="primary" margin="0 0 15px 0" fontFamily="monospace">
             🌐 http://192.168.201.250:3000
           </Text>
           <Box
@@ -394,17 +394,21 @@ const App: React.FC = () => {
             padding="12px 30px"
             borderRadius="12px"
             border="none"
-            fontSize="h4"
+            fontSize={theme.fontSizes.h4}
             fontWeight="bold"
             cursor="pointer"
             onClick={() => window.open('http://192.168.201.250:3000 ', '_blank')}
             style={{
               transition: 'all 0.2s ease',
               boxShadow: '0 4px 15px rgba(0,0,0,0.2)',
-              ':hover': {
-                backgroundColor: '#339af0',
-                transform: 'translateY(-2px)'
-              }
+            }}
+            onMouseOver={(e: React.MouseEvent<HTMLElement>) => {
+              e.currentTarget.style.backgroundColor = '#339af0';
+              e.currentTarget.style.transform = 'translateY(-2px)';
+            }}
+            onMouseOut={(e: React.MouseEvent<HTMLElement>) => {
+              e.currentTarget.style.backgroundColor = '#4dabf7';
+              e.currentTarget.style.transform = 'translateY(0)';
             }}
           >
             🚀 Probar Aplicación
@@ -412,18 +416,251 @@ const App: React.FC = () => {
         </Box>
       </SlideWithBackground>
 
+      {/* NUEVAS SLIDES DE CÓDIGO AÑADIDAS AQUÍ */}
+      
+      {/* Nueva Slide: Código del Servidor WebSocket */}
+      <SlideWithBackground backgroundImage={imagen4} overlayOpacity={0.75} contentPadding="3%">
+        <Heading fontSize={theme.fontSizes.h2} color="primary" textAlign="center" margin="0 0 20px 0">
+          Creando un Servidor WebSocket
+        </Heading>
+        
+        <Box 
+          backgroundColor="rgba(0, 0, 0, 0.6)" 
+          padding="20px" 
+          borderRadius="10px"
+          margin="0 auto"
+          width="95%"
+          maxHeight="70vh"
+          overflow="auto"
+        >
+          <CodePane language="javascript" fontSize="1.4rem">
+{`// Importamos la librería ws
+const websocket = require('ws');
+
+// Creamos el servidor en el puerto 3001
+const server = new websocket.Server({ 
+  port: 3001, 
+  host: '0.0.0.0' 
+});
+
+// Manejamos nuevas conexiones
+server.on('connection', (socket) => {
+  // Obtenemos la IP del cliente
+  const ip = socket._socket.remoteAddress;
+  
+  // Extraemos el último segmento de la IP
+  const lastSegment = ip.split('.').pop();
+  socket.userIpSegment = lastSegment;
+
+  console.log('Usuario conectado desde IP:', ip);
+
+  // Escuchamos los mensajes entrantes
+  socket.on('message', (data) => {
+    console.log('Mensaje recibido:', data.toString());
+    
+    // Reenviamos el mensaje a todos los clientes
+    server.clients.forEach((client) => {
+      // Excepto al que envió el mensaje original
+      if (client !== socket && 
+          client.readyState === websocket.OPEN) {
+        client.send(\`Usuario .\${socket.userIpSegment}: \${data}\`);
+      }
+    });
+  });
+});
+
+console.log('🚀 Servidor WebSocket ejecutándose en puerto 3001');`}
+          </CodePane>
+        </Box>
+        
+        <Box margin="20px 0 0 0" padding="15px" backgroundColor="rgba(255,255,255,0.1)" borderRadius="8px">
+          <Text fontSize={theme.fontSizes.h4} color="tertiary" textAlign="left">
+            <span style={{color: '#4dabf7', fontWeight: 'bold'}}>Explicación:</span> Este código crea un servidor WebSocket que escucha conexiones, recibe mensajes y los retransmite a todos los clientes conectados.
+          </Text>
+        </Box>
+      </SlideWithBackground>
+
+      {/* Nueva Slide: Explicación del Código - Parte 1 */}
+      <SlideWithBackground backgroundImage={imagen4} overlayOpacity={0.75} contentPadding="3%">
+        <Heading fontSize={theme.fontSizes.h2} color="primary" textAlign="center" margin="0 0 20px 0">
+          Inicialización del Servidor
+        </Heading>
+        
+        <Box 
+          backgroundColor="rgba(0, 0, 0, 0.6)" 
+          padding="20px" 
+          borderRadius="10px"
+          margin="0 auto 20px"
+          width="95%"
+        >
+          <CodePane language="javascript" fontSize="1.6rem">
+{`const websocket = require('ws');
+const server = new websocket.Server({ 
+  port: 3001, 
+  host: '0.0.0.0' 
+});`}
+          </CodePane>
+        </Box>
+        
+        <Box padding="15px" backgroundColor="rgba(255,255,255,0.1)" borderRadius="8px">
+          <Text fontSize={theme.fontSizes.h4} color="tertiary" textAlign="left">
+            <span style={{color: '#4dabf7', fontWeight: 'bold'}}>Puntos clave:</span>
+          </Text>
+          <UnorderedList fontSize={theme.fontSizes.h4} color="tertiary">
+            <Appear>
+              <ListItem>
+                <Text fontSize={theme.fontSizes.h4} color="tertiary">
+                  Importamos la librería <span style={{fontFamily: 'monospace'}}>ws</span> para WebSockets
+                </Text>
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                <Text fontSize={theme.fontSizes.h4} color="tertiary">
+                  Creamos un servidor en el puerto 3001
+                </Text>
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                <Text fontSize={theme.fontSizes.h4} color="tertiary">
+                  <span style={{fontFamily: 'monospace'}}>host: '0.0.0.0'</span> permite conexiones desde cualquier red
+                </Text>
+              </ListItem>
+            </Appear>
+          </UnorderedList>
+        </Box>
+      </SlideWithBackground>
+
+      {/* Nueva Slide: Explicación del Código - Parte 2 */}
+      <SlideWithBackground backgroundImage={imagen4} overlayOpacity={0.75} contentPadding="3%">
+        <Heading fontSize={theme.fontSizes.h2} color="primary" textAlign="center" margin="0 0 20px 0">
+          Manejo de Conexiones
+        </Heading>
+        
+        <Box 
+          backgroundColor="rgba(0, 0, 0, 0.6)" 
+          padding="20px" 
+          borderRadius="10px"
+          margin="0 auto 20px"
+          width="95%"
+        >
+          <CodePane language="javascript" fontSize="1.6rem">
+{`server.on('connection', (socket) => {
+  const ip = socket._socket.remoteAddress;
+  const lastSegment = ip.split('.').pop();
+  socket.userIpSegment = lastSegment;
+  console.log('Usuario conectado desde IP:', ip);
+});`}
+          </CodePane>
+        </Box>
+        
+        <Box padding="15px" backgroundColor="rgba(255,255,255,0.1)" borderRadius="8px">
+          <Text fontSize={theme.fontSizes.h4} color="tertiary" textAlign="left">
+            <span style={{color: '#4dabf7', fontWeight: 'bold'}}>Puntos clave:</span>
+          </Text>
+          <UnorderedList fontSize={theme.fontSizes.h4} color="tertiary">
+            <Appear>
+              <ListItem>
+                <Text fontSize={theme.fontSizes.h4} color="tertiary">
+                  El evento <span style={{fontFamily: 'monospace'}}>connection</span> se dispara cuando un cliente se conecta
+                </Text>
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                <Text fontSize={theme.fontSizes.h4} color="tertiary">
+                  Obtenemos la IP del cliente para identificarlo
+                </Text>
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                <Text fontSize={theme.fontSizes.h4} color="tertiary">
+                  Guardamos el último segmento de la IP como identificador simple
+                </Text>
+              </ListItem>
+            </Appear>
+          </UnorderedList>
+        </Box>
+      </SlideWithBackground>
+
+      {/* Nueva Slide: Explicación del Código - Parte 3 */}
+      <SlideWithBackground backgroundImage={imagen4} overlayOpacity={0.75} contentPadding="3%">
+        <Heading fontSize={theme.fontSizes.h2} color="primary" textAlign="center" margin="0 0 20px 0">
+          Manejo de Mensajes
+        </Heading>
+        
+        <Box 
+          backgroundColor="rgba(0, 0, 0, 0.6)" 
+          padding="20px" 
+          borderRadius="10px"
+          margin="0 auto 20px"
+          width="95%"
+        >
+          <CodePane language="javascript" fontSize="1.5rem">
+{`socket.on('message', (data) => {
+  console.log('Mensaje recibido:', data.toString());
+  
+  server.clients.forEach((client) => {
+    if (client !== socket && 
+        client.readyState === websocket.OPEN) {
+      client.send(\`Usuario .\${socket.userIpSegment}: \${data}\`);
+    }
+  });
+});`}
+          </CodePane>
+        </Box>
+        
+        <Box padding="15px" backgroundColor="rgba(255,255,255,0.1)" borderRadius="8px">
+          <Text fontSize={theme.fontSizes.h4} color="tertiary" textAlign="left">
+            <span style={{color: '#4dabf7', fontWeight: 'bold'}}>Puntos clave:</span>
+          </Text>
+          <UnorderedList fontSize={theme.fontSizes.h4} color="tertiary">
+            <Appear>
+              <ListItem>
+                <Text fontSize={theme.fontSizes.h4} color="tertiary">
+                  El evento <span style={{fontFamily: 'monospace'}}>message</span> se dispara cuando llega un mensaje
+                </Text>
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                <Text fontSize={theme.fontSizes.h4} color="tertiary">
+                  Iteramos sobre todos los clientes conectados
+                </Text>
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                <Text fontSize={theme.fontSizes.h4} color="tertiary">
+                  Enviamos el mensaje a todos excepto al remitente original
+                </Text>
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                <Text fontSize={theme.fontSizes.h4} color="tertiary">
+                  Añadimos el identificador del usuario al mensaje
+                </Text>
+              </ListItem>
+            </Appear>
+          </UnorderedList>
+        </Box>
+      </SlideWithBackground>
+
       {/* Cierre */}
       <SlideWithBackground backgroundImage={imagen4} overlayOpacity={0.85} contentPadding="5%">
-        <Heading fontSize="h1" color="primary" textAlign="center" margin="0 0 30px 0">
+        <Heading fontSize={theme.fontSizes.h1} color="primary" textAlign="center" margin="0 0 30px 0">
           ¡Gracias!
         </Heading>
-        <Text fontSize="h2" color="tertiary" textAlign="center" margin="30px 0">
+        <Text fontSize={theme.fontSizes.h2} color="tertiary" textAlign="center" margin="30px 0">
           WebSockets & WebRTC
         </Text>
-        <Text fontSize="h3" color="tertiary" textAlign="center" margin="40px 0 30px 0">
+        <Text fontSize={theme.fontSizes.h3} color="tertiary" textAlign="center" margin="40px 0 30px 0">
           Comunicación en tiempo real para el futuro de la web
         </Text>
-        <Text fontSize="h4" color="secondary" textAlign="center" margin="40px 0 0 0">
+        <Text fontSize={theme.fontSizes.h4} color="secondary" textAlign="center" margin="40px 0 0 0">
           💡 ¿Preguntas?
         </Text>
       </SlideWithBackground>
