@@ -41,5 +41,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "key": "value",
+  "devDependencies": {
+    "cross-env": "^10.0.0"
   }
 }

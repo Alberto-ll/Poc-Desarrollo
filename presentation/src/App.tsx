@@ -20,6 +20,58 @@ import imagen3 from './assets/imagen2.png';
 import imagen4 from './assets/imagen3.png';
 import imagen5 from './assets/imagen4.png';
 
+// CONFIGURACIÓN GLOBAL - CAMBIA ESTOS VALORES SEGÚN TU RED
+const APP_CONFIG = {
+  serverIp: "192.168.100.9",  // Cambia por la IP de tu dispositivo
+  serverPort: "3000",
+  websocketPort: "3001"
+};
+
+const APP_URL = `http://${APP_CONFIG.serverIp}:${APP_CONFIG.serverPort}`;
+const WS_URL = `ws://${APP_CONFIG.serverIp}:${APP_CONFIG.websocketPort}`;
+
+// Componente QR Code
+const QRCodeComponent = ({ url, size = 250 }: { url: string; size?: number }) => {
+  const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&data=${encodeURIComponent(url)}`;
+  
+  return (
+    <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" margin="20px 0">
+      <img 
+        src={qrCodeUrl} 
+        alt={`QR Code para ${url}`}
+        style={{ 
+          width: `${size}px`, 
+          height: `${size}px`,
+          border: '8px solid white',
+          borderRadius: '12px',
+          boxShadow: '0 4px 15px rgba(0,0,0,0.3)'
+        }} 
+      />
+      <Text 
+        fontSize="1.4rem" 
+        color="tertiary" 
+        margin="15px 0 0 0"
+        textAlign="center"
+        style={{ 
+          backgroundColor: 'rgba(255,255,255,0.1)', 
+          padding: '8px 12px',
+          borderRadius: '6px'
+        }}
+      >
+        Escanee para acceder
+      </Text>
+      <Text 
+        fontSize="1.0rem" 
+        color="secondary" 
+        margin="10px 0 0 0"
+        textAlign="center"
+        fontFamily="monospace"
+      >
+      </Text>
+    </Box>
+  );
+};
+
 // Definición de tipos para el tema
 interface Theme {
   fonts: {
@@ -267,7 +319,7 @@ const App: React.FC = () => {
           ¿Qué es WebRTC?
         </Heading>
         <Text fontSize={theme.fontSizes.h3} color="tertiary" textAlign="center" margin="30px 0">
-          Es una tecnología y conjunto de protocolos que permite la comunicación en tiempo real directamente entre navegadores o aplicaciones, sin necesidad de un servidor intermedio para la transmisión de datos.
+          Es una tecnología y conjunto de protocolos que permite la comunicación en tiempo real directamente entre navegadores o aplicaciones, sin necesidad de an servidor intermedio para la transmisión de datos.
         </Text>
       </SlideWithBackground>
 
@@ -368,56 +420,64 @@ const App: React.FC = () => {
         </UnorderedList>
       </SlideWithBackground>
 
-      {/* Demo */}
+      {/* Demo con QR destacado */}
       <SlideWithBackground backgroundImage={imagen4} overlayOpacity={0.8} contentPadding="5%">
         <Heading fontSize={theme.fontSizes.h2} color="primary" textAlign="center" margin="0 0 40px 0">
           Prueba Práctica
         </Heading>
-        <Text fontSize={theme.fontSizes.h3} color="tertiary" textAlign="center" margin="30px 0">
-          Experimenta con WebSockets en tiempo real
-        </Text>
-        <Box 
-          backgroundColor="rgba(255,255,255,0.15)" 
-          padding="20px" 
-          borderRadius="16px" 
-          width="90%" 
-          margin="30px auto"
-          style={{ backdropFilter: 'blur(8px)' }}
-        >
-          <Text fontSize={theme.fontSizes.h4} color="primary" margin="0 0 15px 0" fontFamily="monospace">
-            🌐 http://192.168.201.250:3000
-          </Text>
-          <Box
-            as="button"
-            backgroundColor="#4dabf7"
-            color="#1a1a1a"
-            padding="12px 30px"
-            borderRadius="12px"
-            border="none"
-            fontSize={theme.fontSizes.h4}
-            fontWeight="bold"
-            cursor="pointer"
-            onClick={() => window.open('http://192.168.201.250:3000 ', '_blank')}
-            style={{
-              transition: 'all 0.2s ease',
-              boxShadow: '0 4px 15px rgba(0,0,0,0.2)',
-            }}
-            onMouseOver={(e: React.MouseEvent<HTMLElement>) => {
-              e.currentTarget.style.backgroundColor = '#339af0';
-              e.currentTarget.style.transform = 'translateY(-2px)';
-            }}
-            onMouseOut={(e: React.MouseEvent<HTMLElement>) => {
-              e.currentTarget.style.backgroundColor = '#4dabf7';
-              e.currentTarget.style.transform = 'translateY(0)';
-            }}
+        
+        <FlexBox justifyContent="center" alignItems="center">
+          {/* Código QR */}
+          <QRCodeComponent url={APP_URL} size={280} />
+          
+          <Box 
+            backgroundColor="rgba(255,255,255,0.15)" 
+            padding="25px" 
+            borderRadius="16px" 
+            margin="0 0 0 40px"
+            style={{ backdropFilter: 'blur(8px)' }}
           >
-            🚀 Probar Aplicación
+            <Text fontSize={theme.fontSizes.h3} color="primary" margin="0 0 15px 0" textAlign="center">
+              Acceso Rápido
+            </Text>
+            <Text fontSize={theme.fontSizes.h4} color="primary" margin="0 0 20px 0" fontFamily="monospace" textAlign="center">
+              {APP_URL}
+            </Text>
+            <Box
+              as="button"
+              backgroundColor="#4dabf7"
+              color="#1a1a1a"
+              padding="15px 40px"
+              borderRadius="12px"
+              border="none"
+              fontSize={theme.fontSizes.h4}
+              fontWeight="bold"
+              cursor="pointer"
+              onClick={() => window.open(APP_URL, '_blank')}
+              style={{
+                transition: 'all 0.2s ease',
+                boxShadow: '0 4px 15px rgba(0,0,0,0.2)',
+                width: '100%'
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.backgroundColor = '#339af0';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.backgroundColor = '#4dabf7';
+                e.currentTarget.style.transform = 'translateY(0)';
+              }}
+            >
+              🚀 Abrir Aplicación
+            </Box>
           </Box>
-        </Box>
+        </FlexBox>
+        
+        <Text fontSize={theme.fontSizes.h4} color="tertiary" textAlign="center" margin="40px 0 0 0">
+          Escanea el código QR o haz clic en el botón para probar la aplicación
+        </Text>
       </SlideWithBackground>
 
-      {/* NUEVAS SLIDES DE CÓDIGO AÑADIDAS AQUÍ */}
-      
       {/* Nueva Slide: Código del Servidor WebSocket */}
       <SlideWithBackground backgroundImage={imagen4} overlayOpacity={0.75} contentPadding="3%">
         <Heading fontSize={theme.fontSizes.h2} color="primary" textAlign="center" margin="0 0 20px 0">
@@ -437,9 +497,9 @@ const App: React.FC = () => {
 {`// Importamos la librería ws
 const websocket = require('ws');
 
-// Creamos el servidor en el puerto 3001
+// Creamos el servidor en el puerto ${APP_CONFIG.websocketPort}
 const server = new websocket.Server({ 
-  port: 3001, 
+  port: ${APP_CONFIG.websocketPort}, 
   host: '0.0.0.0' 
 });
 
@@ -469,7 +529,7 @@ server.on('connection', (socket) => {
   });
 });
 
-console.log('🚀 Servidor WebSocket ejecutándose en puerto 3001');`}
+console.log('🚀 Servidor WebSocket ejecutándose en ${WS_URL}');`}
           </CodePane>
         </Box>
         
@@ -496,7 +556,7 @@ console.log('🚀 Servidor WebSocket ejecutándose en puerto 3001');`}
           <CodePane language="javascript" fontSize="1.6rem">
 {`const websocket = require('ws');
 const server = new websocket.Server({ 
-  port: 3001, 
+  port: ${APP_CONFIG.websocketPort}, 
   host: '0.0.0.0' 
 });`}
           </CodePane>
@@ -507,27 +567,25 @@ const server = new websocket.Server({
             <span style={{color: '#4dabf7', fontWeight: 'bold'}}>Puntos clave:</span>
           </Text>
           <UnorderedList fontSize={theme.fontSizes.h4} color="tertiary">
-            <Appear>
+
               <ListItem>
                 <Text fontSize={theme.fontSizes.h4} color="tertiary">
                   Importamos la librería <span style={{fontFamily: 'monospace'}}>ws</span> para WebSockets
                 </Text>
               </ListItem>
-            </Appear>
-            <Appear>
+
               <ListItem>
                 <Text fontSize={theme.fontSizes.h4} color="tertiary">
-                  Creamos un servidor en el puerto 3001
+                  Creamos un servidor en el puerto {APP_CONFIG.websocketPort}
                 </Text>
               </ListItem>
-            </Appear>
-            <Appear>
+
               <ListItem>
                 <Text fontSize={theme.fontSizes.h4} color="tertiary">
                   <span style={{fontFamily: 'monospace'}}>host: '0.0.0.0'</span> permite conexiones desde cualquier red
                 </Text>
               </ListItem>
-            </Appear>
+
           </UnorderedList>
         </Box>
       </SlideWithBackground>
@@ -560,27 +618,25 @@ const server = new websocket.Server({
             <span style={{color: '#4dabf7', fontWeight: 'bold'}}>Puntos clave:</span>
           </Text>
           <UnorderedList fontSize={theme.fontSizes.h4} color="tertiary">
-            <Appear>
+
               <ListItem>
                 <Text fontSize={theme.fontSizes.h4} color="tertiary">
                   El evento <span style={{fontFamily: 'monospace'}}>connection</span> se dispara cuando un cliente se conecta
                 </Text>
               </ListItem>
-            </Appear>
-            <Appear>
+
               <ListItem>
                 <Text fontSize={theme.fontSizes.h4} color="tertiary">
                   Obtenemos la IP del cliente para identificarlo
                 </Text>
               </ListItem>
-            </Appear>
-            <Appear>
+
               <ListItem>
                 <Text fontSize={theme.fontSizes.h4} color="tertiary">
                   Guardamos el último segmento de la IP como identificador simple
                 </Text>
               </ListItem>
-            </Appear>
+
           </UnorderedList>
         </Box>
       </SlideWithBackground>
@@ -617,34 +673,31 @@ const server = new websocket.Server({
             <span style={{color: '#4dabf7', fontWeight: 'bold'}}>Puntos clave:</span>
           </Text>
           <UnorderedList fontSize={theme.fontSizes.h4} color="tertiary">
-            <Appear>
+
               <ListItem>
                 <Text fontSize={theme.fontSizes.h4} color="tertiary">
                   El evento <span style={{fontFamily: 'monospace'}}>message</span> se dispara cuando llega un mensaje
                 </Text>
               </ListItem>
-            </Appear>
-            <Appear>
+
               <ListItem>
                 <Text fontSize={theme.fontSizes.h4} color="tertiary">
                   Iteramos sobre todos los clientes conectados
                 </Text>
               </ListItem>
-            </Appear>
-            <Appear>
+
               <ListItem>
                 <Text fontSize={theme.fontSizes.h4} color="tertiary">
                   Enviamos el mensaje a todos excepto al remitente original
                 </Text>
               </ListItem>
-            </Appear>
-            <Appear>
+
               <ListItem>
                 <Text fontSize={theme.fontSizes.h4} color="tertiary">
                   Añadimos el identificador del usuario al mensaje
                 </Text>
               </ListItem>
-            </Appear>
+
           </UnorderedList>
         </Box>
       </SlideWithBackground>
