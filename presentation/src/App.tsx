@@ -22,11 +22,7 @@ import imagen5 from './assets/imagen4.png';
 
 // CONFIGURACIÓN GLOBAL - CAMBIA ESTOS VALORES SEGÚN TU RED
 const APP_CONFIG = {
-<<<<<<< HEAD
-  serverIp: "192.168.201.250",  // Cambia por la IP de tu dispositivo
-=======
   serverIp: "192.168.203.105",  // Cambia por la IP de tu dispositivo
->>>>>>> 22dc3964a2102851ff85d45bfc85230e7ebefffe
   serverPort: "3000",
   websocketPort: "3001"
 };
@@ -76,7 +72,7 @@ const QRCodeComponent = ({ url, size = 250 }: { url: string; size?: number }) =>
   );
 };
 
-// Definición de tipos para el tema
+}
 interface Theme {
   fonts: {
     header: string;
@@ -99,7 +95,7 @@ interface Theme {
   space: number[];
 }
 
-// Tema optimizado
+
 const theme: Theme = {
   fonts: {
     header: '"Helvetica Neue", Arial, sans-serif',
@@ -122,7 +118,7 @@ const theme: Theme = {
   space: [0, 10, 15, 20, 30, 40]
 };
 
-// Props para SlideWithBackground
+}
 interface SlideWithBackgroundProps {
   children: React.ReactNode;
   backgroundImage: string;
@@ -130,7 +126,7 @@ interface SlideWithBackgroundProps {
   contentPadding?: string;
 }
 
-// Componente SlideWithBackground
+
 const SlideWithBackground: React.FC<SlideWithBackgroundProps> = ({ 
   children, 
   backgroundImage, 
@@ -182,7 +178,7 @@ const App: React.FC = () => {
         space: theme.space
       }}
     >
-      {/* Portada */}
+
       <SlideWithBackground backgroundImage={imagen4} overlayOpacity={0.8} contentPadding="5%">
         <Heading fontSize={theme.fontSizes.h1} color="primary" textAlign="center" margin="0 0 30px 0">
           ¿Qué son los WebSockets?
@@ -192,7 +188,7 @@ const App: React.FC = () => {
         </Text>
       </SlideWithBackground>
 
-      {/* Antes de los WebSockets */}
+
       <SlideWithBackground backgroundImage={imagen4} overlayOpacity={0.75}>
         <Heading fontSize={theme.fontSizes.h2} color="primary" textAlign="center" margin="0 0 40px 0">
           Antes de los WebSockets
@@ -224,7 +220,7 @@ const App: React.FC = () => {
         </Appear>
       </SlideWithBackground>
 
-      {/* Con WebSockets */}
+
       <SlideWithBackground backgroundImage={imagen4} overlayOpacity={0.75}>
         <Heading fontSize={theme.fontSizes.h2} color="primary" textAlign="center" margin="0 0 40px 0">
           Con WebSockets
@@ -256,7 +252,7 @@ const App: React.FC = () => {
         </Appear>
       </SlideWithBackground>
 
-      {/* ¿Para qué son utilizados? */}
+
       <SlideWithBackground backgroundImage={imagen4} overlayOpacity={0.75} contentPadding="5% 8%">
         <Heading fontSize={theme.fontSizes.h2} color="primary" textAlign="center" margin="0 0 40px 0">
           ¿Para qué son utilizados?
@@ -317,7 +313,7 @@ const App: React.FC = () => {
         </UnorderedList>
       </SlideWithBackground>
 
-      {/* WebRTC */}
+
       <SlideWithBackground backgroundImage={imagen5} overlayOpacity={0.8} contentPadding="5%">
         <Heading fontSize={theme.fontSizes.h1} color="primary" textAlign="center" margin="0 0 30px 0">
           ¿Qué es WebRTC?
@@ -327,7 +323,6 @@ const App: React.FC = () => {
         </Text>
       </SlideWithBackground>
 
-      {/* Desafíos de WebRTC */}
       <SlideWithBackground backgroundImage={imagen5} overlayOpacity={0.75} contentPadding="5% 8%">
         <Heading fontSize={theme.fontSizes.h2} color="primary" textAlign="center" margin="0 0 40px 0">
           Desafíos de WebRTC
@@ -383,7 +378,7 @@ const App: React.FC = () => {
         
       </SlideWithBackground>
 
-      {/* ¿Para qué es utilizada WebRTC? */}
+
       <SlideWithBackground backgroundImage={imagen5} overlayOpacity={0.75} contentPadding="5% 8%">
         <Heading fontSize={theme.fontSizes.h2} color="primary" textAlign="center" margin="0 0 40px 0">
           ¿Para qué es utilizada WebRTC?
@@ -426,14 +421,14 @@ const App: React.FC = () => {
         </UnorderedList>
       </SlideWithBackground>
 
-      {/* Demo con QR destacado */}
+
       <SlideWithBackground backgroundImage={imagen4} overlayOpacity={0.8} contentPadding="5%">
         <Heading fontSize={theme.fontSizes.h2} color="primary" textAlign="center" margin="0 0 40px 0">
           Prueba Práctica
         </Heading>
         
         <FlexBox justifyContent="center" alignItems="center">
-          {/* Código QR */}
+
           <QRCodeComponent url={APP_URL} size={280} />
           
           <Box 
@@ -484,7 +479,7 @@ const App: React.FC = () => {
         </Text>
       </SlideWithBackground>
 
-      {/* Nueva Slide: Código del Servidor WebSocket */}
+
       <SlideWithBackground backgroundImage={imagen4} overlayOpacity={0.75} contentPadding="3%">
         <Heading fontSize={theme.fontSizes.h2} color="primary" textAlign="center" margin="0 0 20px 0">
           Creando un Servidor WebSocket
@@ -546,7 +541,7 @@ console.log('🚀 Servidor WebSocket ejecutándose en ${WS_URL}');`}
         </Box>
       </SlideWithBackground>
 
-      {/* Nueva Slide: Explicación del Código - Parte 1 */}
+      
       <SlideWithBackground backgroundImage={imagen4} overlayOpacity={0.75} contentPadding="3%">
         <Heading fontSize={theme.fontSizes.h2} color="primary" textAlign="center" margin="0 0 20px 0">
           Inicialización del Servidor
@@ -596,7 +591,7 @@ const server = new websocket.Server({
         </Box>
       </SlideWithBackground>
 
-      {/* Nueva Slide: Explicación del Código - Parte 2 */}
+      
       <SlideWithBackground backgroundImage={imagen4} overlayOpacity={0.75} contentPadding="3%">
         <Heading fontSize={theme.fontSizes.h2} color="primary" textAlign="center" margin="0 0 20px 0">
           Manejo de Conexiones
@@ -647,7 +642,7 @@ const server = new websocket.Server({
         </Box>
       </SlideWithBackground>
 
-      {/* Nueva Slide: Explicación del Código - Parte 3 */}
+      
       <SlideWithBackground backgroundImage={imagen4} overlayOpacity={0.75} contentPadding="3%">
         <Heading fontSize={theme.fontSizes.h2} color="primary" textAlign="center" margin="0 0 20px 0">
           Manejo de Mensajes
@@ -708,7 +703,7 @@ const server = new websocket.Server({
         </Box>
       </SlideWithBackground>
 
-      {/* Cierre */}
+
       <SlideWithBackground backgroundImage={imagen4} overlayOpacity={0.85} contentPadding="5%">
         <Heading fontSize={theme.fontSizes.h1} color="primary" textAlign="center" margin="0 0 30px 0">
           ¡Gracias!

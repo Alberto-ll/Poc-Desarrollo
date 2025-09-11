@@ -63,3 +63,25 @@ npm run dev:presentation
 
 ---
 
+## Configuración de IPs y puertos (presentación y frontend)
+
+En la presentación debes configurar las IPs y puertos para el front de la POC. Busca la sección de configuración global y adapta los valores según tu red. Por ejemplo:
+
+En la presentacion `src/App.tsx`
+
+```js
+// CONFIGURACIÓN GLOBAL - CAMBIA ESTOS VALORES SEGÚN TU RED 
+const APP_CONFIG = {
+	serverIp: "192.168.203.105",  // Cambia por la IP de tu dispositivo
+	serverPort: "3000",
+	websocketPort: "3001"
+};
+```
+
+Además, en el frontend, en `public/index.html` (o donde se inicialice el cliente WebSocket) hay que ajustar la IP en la línea que conecta al servidor WebSocket. Por ejemplo:
+
+```js
+// Conectar al servidor WebSocket (ajusta la IP según tu configuración)
+const socket = new WebSocket('http://192.168.203.105:3001');
+```
+
