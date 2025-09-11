@@ -22,7 +22,7 @@ import imagen5 from './assets/imagen4.png';
 
 // CONFIGURACIÓN GLOBAL - CAMBIA ESTOS VALORES SEGÚN TU RED
 const APP_CONFIG = {
-  serverIp: "192.168.100.9",  // Cambia por la IP de tu dispositivo
+  serverIp: "192.168.201.250",  // Cambia por la IP de tu dispositivo
   serverPort: "3000",
   websocketPort: "3001"
 };
