@@ -59,3 +59,7 @@ npm run dev:presentation
 1. Configurar el servidor Express con WebSocket en `/backend`
 2. Crear la aplicación React del chat en `/frontend`
 3. Desarrollar la presentación Spectacle en `/presentation`
+
+
+---
+

@@ -97,7 +97,7 @@
             const sendButton = document.getElementById('send-button');
             
             // Conectar al servidor WebSocket (ajusta la IP según tu configuración)
-            const socket = new WebSocket('ws://localhost:3001');
+            const socket = new WebSocket('http://192.168.203.105:3001');
             let userIpSegment = '?';
             
             socket.onopen = () => {

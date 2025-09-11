@@ -22,7 +22,11 @@ import imagen5 from './assets/imagen4.png';
 
 // CONFIGURACIÓN GLOBAL - CAMBIA ESTOS VALORES SEGÚN TU RED
 const APP_CONFIG = {
+<<<<<<< HEAD
   serverIp: "192.168.201.250",  // Cambia por la IP de tu dispositivo
+=======
+  serverIp: "192.168.203.105",  // Cambia por la IP de tu dispositivo
+>>>>>>> 22dc3964a2102851ff85d45bfc85230e7ebefffe
   serverPort: "3000",
   websocketPort: "3001"
 };
@@ -337,25 +341,6 @@ const App: React.FC = () => {
           style={{ listStyleType: 'none', paddingLeft: '0' }}
         >
           <Appear>
-            <ListItem margin="20px 0" style={{ display: 'flex', alignItems: 'flex-start' }}>
-              <span style={{ fontSize: '2.2rem', marginRight: '15px', minWidth: '40px' }}>🔗</span>
-              <div>
-                <Text fontSize="2.4rem" margin="0 0 5px 0" color="#a5d8ff" fontWeight="bold">Servidor de señalización</Text>
-                <Text fontSize="2.0rem" margin="0" opacity={0.9}>Requiere de un servidor para establecer la conexión inicial entre los pares</Text>
-              </div>
-            </ListItem>
-          </Appear>
-          <Appear>
-            <ListItem margin="20px 0" style={{ display: 'flex', alignItems: 'flex-start' }}>
-              <span style={{ fontSize: '2.2rem', marginRight: '15px', minWidth: '40px' }}>🔥</span>
-              <div>
-                <Text fontSize="2.4rem" margin="0 0 5px 0" color="#a5d8ff" fontWeight="bold">Problemas con Firewalls</Text>
-                <Text fontSize="2.0rem" margin="0" opacity={0.9}>Complican la conexión directa entre los pares</Text>
-              </div>
-            </ListItem>
-          </Appear>
-        </UnorderedList>
-        <Appear>
           <Box 
             width="90%" 
             height="280px"
@@ -375,6 +360,27 @@ const App: React.FC = () => {
             />
           </Box>
         </Appear>
+          
+          <Appear>
+            <ListItem margin="20px 0" style={{ display: 'flex', alignItems: 'flex-start' }}>
+              <span style={{ fontSize: '2.2rem', marginRight: '15px', minWidth: '40px' }}>🔗</span>
+              <div>
+                <Text fontSize="2.4rem" margin="0 0 5px 0" color="#a5d8ff" fontWeight="bold">Servidor de señalización</Text>
+                <Text fontSize="2.0rem" margin="0" opacity={0.9}>Requiere de un servidor para establecer la conexión inicial entre los pares</Text>
+              </div>
+            </ListItem>
+          </Appear>
+          <Appear>
+            <ListItem margin="20px 0" style={{ display: 'flex', alignItems: 'flex-start' }}>
+              <span style={{ fontSize: '2.2rem', marginRight: '15px', minWidth: '40px' }}>🔥</span>
+              <div>
+                <Text fontSize="2.4rem" margin="0 0 5px 0" color="#a5d8ff" fontWeight="bold">Problemas con Firewalls y nat</Text>
+                <Text fontSize="2.0rem" margin="0" opacity={0.9}>Complican la conexión directa entre los pares</Text>
+              </div>
+            </ListItem>
+          </Appear>
+        </UnorderedList>
+        
       </SlideWithBackground>
 
       {/* ¿Para qué es utilizada WebRTC? */}
